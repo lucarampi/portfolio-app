@@ -12,14 +12,16 @@ export function Header() {
         <Background />
         <section className="absolute px-2 top-0 left-0 w-full h-full bg-white bg-opacity-[94%] mix-blend-screen">
           <div className="flex flex-col h-full gap-7 my-0 mx-auto items-center justify-center max-w-[1020px]">
+            
+            <div  className="text-black text-center font-mono font-black antialiased text-5xl sm:text-7xl md:text-8xl lg:text-10xl xl:text-12xl">
+
             <TypeIt
-              className="text-black text-center font-mono font-black antialiased text-5xl sm:text-7xl md:text-8xl lg:text-10xl xl:text-12xl"
               options={{
                 lifeLike: true,
                 speed: 100,
-                afterComplete: (instance) => {
+                afterComplete: function (instance: { destroy: () => void; }) {
                   instance.destroy();
-                  setHasEnded(true)
+                  setHasEnded(true);
                 },
               }}
               getBeforeInit={(instance) => {
@@ -47,6 +49,7 @@ export function Header() {
                 return instance;
               }}
             />
+            </div>
             <nav className={`flex px-5 flex-wrap justify-center items-center gap-x-10 gap-y-8 text-black text-xl sm:text-2xl md:text-2xl lg:text-3xl ${hasEnded? "opacity-100" : "opacity-0"} + transition-all ease-in-out duration-500`} >
               {/* <ActiveLink
                 activeClassName="text-black"
