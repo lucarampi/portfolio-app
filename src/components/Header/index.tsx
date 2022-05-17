@@ -26,7 +26,7 @@ export function Header() {
               }}
               getBeforeInit={(instance) => {
                 instance
-                  .type(" ")
+                  .type("")
                   .pause(1250)
                   .type("Think...")
                   .pause(450)
