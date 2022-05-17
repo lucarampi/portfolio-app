@@ -78,7 +78,7 @@ export function Header() {
                 target={"_blank"}
                 className=" py-2 px-7 w-fit bg-black text-white hover:text-black rounded-full ring-offset-white ring-offset-3 hover:ring-4 ring-black border-transparent flex justify-center items-center font-medium hover:bg-white focus:outline-none focus:ring-4 focus:ring-offset-4 focus:ring-offset-white focus:ring-black transition-all" rel="noreferrer"
               >
-                Curriculum
+                Resume
               </a>
             </nav>
         <footer className="absolute bottom-2 text-neutral-500">
