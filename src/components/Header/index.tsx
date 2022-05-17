@@ -1,15 +1,16 @@
-import styles from "./styles.module.scss";
+
 import ActiveLink from "../ActiveLink";
 import TypeIt from "typeit-react";
 import { Background } from "../Background";
-import Link from "next/link";
-import { FilePdf } from "phosphor-react";
+import { useState } from "react";
+
 export function Header() {
+  const [hasEnded, setHasEnded] = useState(false)  
   return (
     <>
       <div className="absolute w-full h-screen overflow-hidden flex justify-center items-center">
         <Background />
-        <header className="absolute px-2 top-0 left-0 w-full h-full bg-white bg-opacity-[94%] mix-blend-screen">
+        <section className="absolute px-2 top-0 left-0 w-full h-full bg-white bg-opacity-[94%] mix-blend-screen">
           <div className="flex flex-col h-full gap-7 my-0 mx-auto items-center justify-center max-w-[1020px]">
             <TypeIt
               className="text-black text-center font-mono font-black antialiased text-5xl sm:text-7xl md:text-8xl lg:text-10xl xl:text-12xl"
@@ -18,6 +19,7 @@ export function Header() {
                 speed: 100,
                 afterComplete: (instance) => {
                   instance.destroy();
+                  setHasEnded(true)
                 },
               }}
               getBeforeInit={(instance) => {
@@ -45,7 +47,7 @@ export function Header() {
                 return instance;
               }}
             />
-            <nav className="flex px-5 flex-wrap justify-center items-center gap-x-10 gap-y-8 text-black text-xl sm:text-2xl md:text-2xl lg:text-3xl" >
+            <nav className={`flex px-5 flex-wrap justify-center items-center gap-x-10 gap-y-8 text-black text-xl sm:text-2xl md:text-2xl lg:text-3xl ${hasEnded? "opacity-100" : "opacity-0"} + transition-all ease-in-out duration-500`} >
               {/* <ActiveLink
                 activeClassName="text-black"
                 defaultClassName="text-black-100"
@@ -53,7 +55,7 @@ export function Header() {
               >
                 <a>Home</a>
               </ActiveLink> */}
-              <ActiveLink
+              {/* <ActiveLink
                 activeClassName="text-black"
                 defaultClassName="text-black-100"
                 href="/projects"
@@ -66,18 +68,25 @@ export function Header() {
                 href="/contact"
               >
                 <a>Contact</a>
-              </ActiveLink>
+              </ActiveLink> */}
 
               <a
-                href="www.google.com"
+                href="https://drive.google.com/file/d/1_P6PPjlM0DLPS7r1h29P3AG8qdHWtyE3/view?usp=sharing"
                 target={"_blank"}
-                className=" py-2 px-5 w-fit bg-black text-white hover:text-black rounded-full ring-offset-white ring-offset-3 hover:ring-4 ring-black border-transparent flex justify-center items-center font-medium hover:bg-white focus:outline-none focus:ring-4 focus:ring-offset-4 focus:ring-offset-white focus:ring-black transition-all"
+                className=" py-2 px-7 w-fit bg-black text-white hover:text-black rounded-full ring-offset-white ring-offset-3 hover:ring-4 ring-black border-transparent flex justify-center items-center font-medium hover:bg-white focus:outline-none focus:ring-4 focus:ring-offset-4 focus:ring-offset-white focus:ring-black transition-all" rel="noreferrer"
               >
                 Curriculum
               </a>
             </nav>
+        <footer className="absolute bottom-2 text-neutral-500">
+          Made by <a 
+          className="underline underline-offset-2 hover:text-black"
+          target={"_blank"}
+          href="https://www.linkedin.com/in/lucarampi/"
+          rel="noreferrer">Luca A.R.</a>
+        </footer>
           </div>
-        </header>
+        </section>
       </div>
     </>
   );
